@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './Components/Header';
+import { Outlet } from 'react-router-dom';
+import PostContainer from './Components/PostContainer';
+import { useSelector } from 'react-redux';
+import Search from './Components/Search';
 
 function App() {
+  const showPostContainer = useSelector(store => store.CreatePost.showPostContainer);
+  const showSearchContainer = useSelector(store => store.searchUserName.showSearchContainer);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='flex flex-row bg-black '>
+      <div className='w-2/12 h-screen hidden | lg:inline-block'></div>
+      <Header/>
+{showPostContainer && <PostContainer/>}
+{showSearchContainer && <Search/>}
+      <Outlet/>
     </div>
   );
 }

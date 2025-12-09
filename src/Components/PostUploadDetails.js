@@ -9,4 +9,4 @@ const PostUploadDetails = ({caption,tags}) => {
   )
 }
 
-export default PostUploadDetails
+export default PostUploadDetails;

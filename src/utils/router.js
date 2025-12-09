@@ -1,10 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Login from "../Components/Login";
-import Edit from "../Components/Edit";
 import Profile from "../Components/Profile";
 import Body from "../Components/Body";
-import Search from "../Components/Search";
+import profileLoader from "./profileLoader";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +15,8 @@ const router = createBrowserRouter([
                 Component: Body
             },
             {
-                path: "/profile",
+                path: "/profile/:id",
+                loader: profileLoader,
                 Component: Profile
             }
         ]

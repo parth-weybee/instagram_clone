@@ -32,7 +32,7 @@ const Edit = ({setIsEdit}) => {
       })
     })
     const data = await response.json();
-    if(data?.statusCode == 200)
+    if(data?.statusCode === 200)
     {
       dispatch(setProfile(data?.data));
       setIsEdit(false);
@@ -68,7 +68,7 @@ const Edit = ({setIsEdit}) => {
     <div className="w-full mx-auto h-full bg-black pt-6 px-4 overflow-y-scroll pb-24 | md:pb-6 md:w-8/12 md:overflow-y-scroll | lg:h-screen lg:w-6/12">
       <h1 className="text-white text-xl font-semibold">Edit Profile</h1>
       <div className="flex w-full rounded-3xl bg-[#262626] px-6 py-4 my-6 items-center flex-wrap gap-5">
-        <UserAvatar url={profile?.coverImage?.url}/>
+        <UserAvatar url={profile?.coverImage?.url} fullName={profile?.firstName +" " + profile?.lastName}/>
         <button className="px-6 py-2 bg-blue-500 text-white rounded-lg | md:ml-auto" onClick={()=> fileRef.current.click()}>
           Change Photo
         </button>

@@ -1,13 +1,11 @@
 
-import {  useRef, useState } from 'react'
+import {  useRef  } from 'react'
 
-const ImageList = ({imageList}) => {
+const ImageList = ({imageList ,showBtns = true}) => {
     const sliderContainer = useRef();
     const image = useRef();
-    const [isChange,setIsChange] = useState(false);
     const handleScroll = (dir)=>
     {
-        console.log("slider called",sliderContainer.current.scrollLeft,image.current.clientWidth);
         dir === "left" ?
         sliderContainer.current.scrollLeft += image.current.clientWidth  :
         sliderContainer.current.scrollLeft -= image.current.clientWidth;
@@ -22,12 +20,12 @@ const ImageList = ({imageList}) => {
             })
         }
     </div>
-    {imageList.length > 1 && <div className='absolute bg-black z-10 w-full'>
-            <button className='bg-white text-black' onClick={()=> handleScroll()}><i class="fa-solid fa-left-long"></i></button>
-            <button className='bg-white text-black' onClick={()=> handleScroll("left")}><i class="fa-solid fa-right-long"></i></button>
+    {imageList.length > 1 && showBtns && <div className=' bg-black z-10 w-full flex justify-between my-5'>
+            <button className='bg-white text-black' onClick={()=> handleScroll()}><i className="fa-solid fa-left-long"></i></button>
+            <button className='bg-white text-black' onClick={()=> handleScroll("left")}><i className="fa-solid fa-right-long"></i></button>
         </div>}
     </div>
   )
 }
 
-export default ImageList
+export default ImageList;

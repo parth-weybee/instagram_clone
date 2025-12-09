@@ -48,14 +48,14 @@ const PostUploadContainer = () => {
     }
   };
   return (
-    <div className="absolute flex-row top-[50%] h-[70%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-3xl bg-[#212328] text-center z-50 w-11/12 overflow-y-scroll justify-center | md:overflow-y-hidden | lg:w-6/12">
+    <div className="fixed flex-row top-[50%] h-[70%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-3xl bg-[#212328] text-center z-50 w-11/12 overflow-y-scroll justify-center | md:overflow-y-hidden | lg:w-6/12">
       <PostContainerHeader handlePostSubmit={handlePostSubmit} />
       <div className="flex flex-col | md:flex-row">
         <div className="w-8/12 mx-auto bg-black h-full items-center">
           <ImageList imageList={imageList} />
         </div>
         <div className="w-full py-4 px-3 | md:w-4/12">
-          <UserAvatar url={profile?.coverImage?.url} />
+          <UserAvatar url={profile?.coverImage?.url} fullName={profile?.firstName +" " + profile?.lastName} />
           <hr className="mt-4" />
           <PostUploadDetails caption={caption} tags={tags} />
         </div>

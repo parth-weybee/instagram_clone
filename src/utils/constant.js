@@ -14,3 +14,13 @@ export const PROFILE_AVATAR_API = "http://localhost:8080/api/v1/social-media/pro
 export const UPLOAD_MEDIA_IMG = "https://www.shutterstock.com/image-vector/image-upload-iconsharingphoto-vector-illustration-260nw-1835553472.jpg";
 
 export const CREATE_POST = "http://localhost:8080/api/v1/social-media/posts";
+
+export const USER_ALL_POST = "http://localhost:8080/api/v1/social-media/posts/get/my"; 
+
+export const GET_POST_BY_USERNAME = "http://localhost:8080/api/v1/social-media/posts/get/u/";
+
+export const PROFILE_BY_USERNAME = "http://localhost:8080/api/v1/social-media/profile/u/";
+
+export const FOLLOW_API = "http://localhost:8080/api/v1/social-media/follow/";
+
+export const LIKE_API = "http://localhost:8080/api/v1/social-media/like/post/";

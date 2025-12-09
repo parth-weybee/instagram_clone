@@ -1,7 +1,7 @@
 
 
 import { useDispatch, useSelector } from 'react-redux'
-import { setImagesFiles, setPostImages, togglePostContainer } from '../redux/createPostSlice';
+import {  setPostImages, togglePostContainer } from '../redux/createPostSlice';
 
 const PostContainerHeader = ({handlePostSubmit}) => {
     const postImages = useSelector(store => store.CreatePost.postImages)

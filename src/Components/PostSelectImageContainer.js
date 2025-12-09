@@ -3,7 +3,7 @@ import { UPLOAD_MEDIA_IMG } from '../utils/constant'
 import { useRef } from 'react';
 import PostContainerHeader from './PostContainerHeader';
 import { useDispatch } from 'react-redux';
-import { setImagesFiles, setPostImages } from '../redux/createPostSlice';
+import { setPostImages } from '../redux/createPostSlice';
 
 const PostSelectImageContainer = () => {
     const imageFile = useRef();
@@ -18,7 +18,7 @@ const PostSelectImageContainer = () => {
         dispatch(setPostImages(imageUrls));
     }
   return (
-    <div className='absolute top-[50%] h-[70%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-3xl bg-[#212328] text-center z-50 w-10/12 | lg:w-3/12 '>
+    <div className='fixed top-[50%] h-[70%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-3xl bg-[#212328] text-center z-50 w-10/12 | lg:w-3/12 '>
         <PostContainerHeader/>
         <div className='flex flex-col h-full justify-center items-center p-5'>
             <img className='w-36 h-36' src={UPLOAD_MEDIA_IMG} alt="Upload Media IMG"/>

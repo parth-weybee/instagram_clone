@@ -1,9 +1,10 @@
 
 import React, { useEffect } from 'react'
 import { PROFILE_API } from '../utils/constant';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setProfile } from '../redux/profileSlice';
 import { useNavigate } from 'react-router-dom';
+import FeedContainer from './FeedContainer';
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -34,11 +35,7 @@ const Body = () => {
   },[])
   return (
 <>
-    
-    <div className='w-full bg-black h-[1000px]'></div>
-    <div className='w-full bg-black h-[1000px]'></div>
-
-    <div className='w-full bg-black h-[1000px]'></div>
+    <FeedContainer/>
 </>
   )
 }

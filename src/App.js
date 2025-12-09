@@ -11,8 +11,8 @@ function App() {
     <div className='flex flex-row bg-black '>
       <div className='w-2/12 h-screen hidden | lg:inline-block'></div>
       <Header/>
-{showPostContainer && <PostContainer/>}
-{showSearchContainer && <Search/>}
+      {showPostContainer && <PostContainer/>}
+      {showSearchContainer && <Search/>}
       <Outlet/>
     </div>
   );

@@ -5,7 +5,11 @@ import PostContainerHeader from "./PostContainerHeader";
 import UserAvatar from "./UserAvatar";
 import PostUploadDetails from "./PostUploadDetails";
 import { CREATE_POST } from "../utils/constant";
-import { setPostDetails, setPostImages, togglePostContainer } from "../redux/createPostSlice";
+import {
+  setPostDetails,
+  setPostImages,
+  togglePostContainer,
+} from "../redux/createPostSlice";
 
 const PostUploadContainer = () => {
   const imageList = useSelector((store) => store.CreatePost.postImages);
@@ -21,27 +25,25 @@ const PostUploadContainer = () => {
       (blob, index) =>
         new File([blob], "image" + index + ".png", { type: blob.type })
     );
-    
+
     const formData = new FormData();
-    files.map((file)=>
-    {
-      formData.append("images",file);
-    })
+    files.map((file) => {
+      formData.append("images", file);
+    });
     formData.append("content", caption.current.value);
     tags.current.value.split(", ").map((tag, ind) => {
       formData.append(`tags[${ind}]`, tag);
     });
-    const token =  localStorage.getItem("accessToken");
+    const token = localStorage.getItem("accessToken");
     const res = await fetch(CREATE_POST, {
       method: "POST",
       headers: {
-        "Authorization": "Bearer " + token
+        Authorization: "Bearer " + token,
       },
-      body: formData
+      body: formData,
     });
     const data = await res.json();
-    if(data?.statusCode)
-    {
+    if (data?.statusCode) {
       dispatch(setPostImages(null));
       dispatch(setPostDetails(null));
       dispatch(togglePostContainer(false));
@@ -55,7 +57,10 @@ const PostUploadContainer = () => {
           <ImageList imageList={imageList} />
         </div>
         <div className="w-full py-4 px-3 | md:w-4/12">
-          <UserAvatar url={profile?.coverImage?.url} fullName={profile?.firstName +" " + profile?.lastName} />
+          <UserAvatar
+            url={profile?.coverImage?.url}
+            fullName={profile?.firstName + " " + profile?.lastName}
+          />
           <hr className="mt-4" />
           <PostUploadDetails caption={caption} tags={tags} />
         </div>

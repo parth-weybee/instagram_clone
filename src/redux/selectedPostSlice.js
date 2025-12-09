@@ -2,15 +2,22 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const selectedPostSlice = createSlice({
     name: "SelectedPost",
-    initialState: null,
+    initialState: {
+        selectedPost: null,
+        ShowSelectedPost: false
+    },
     reducers: {
         setSelectedPost: (state,action)=>
         {
-            return action.payload;
+            state.selectedPost = action.payload;
+        },
+        toggleShowSelectedPost: (state,action)=>
+        {
+            state.ShowSelectedPost = action.payload;
         }
     }
 })
 
-export const {setSelectedPost} = selectedPostSlice.actions;
+export const {setSelectedPost,toggleShowSelectedPost} = selectedPostSlice.actions;
 
 export default selectedPostSlice.reducer;

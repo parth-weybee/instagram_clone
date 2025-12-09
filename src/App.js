@@ -3,16 +3,19 @@ import { Outlet } from 'react-router-dom';
 import PostContainer from './Components/PostContainer';
 import { useSelector } from 'react-redux';
 import Search from './Components/Search';
+import ShowPostContainer from './Components/ShowPostContainer';
 
 function App() {
   const showPostContainer = useSelector(store => store.CreatePost.showPostContainer);
   const showSearchContainer = useSelector(store => store.searchUserName.showSearchContainer);
+  const selectedShowPost = useSelector(store => store.selectedPost.ShowSelectedPost)
   return (
     <div className='flex flex-row bg-black '>
       <div className='w-2/12 h-screen hidden | lg:inline-block'></div>
       <Header/>
       {showPostContainer && <PostContainer/>}
       {showSearchContainer && <Search/>}
+      {selectedShowPost && <ShowPostContainer/>}
       <Outlet/>
     </div>
   );

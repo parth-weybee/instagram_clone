@@ -24,3 +24,9 @@ export const PROFILE_BY_USERNAME = "http://localhost:8080/api/v1/social-media/pr
 export const FOLLOW_API = "http://localhost:8080/api/v1/social-media/follow/";
 
 export const LIKE_API = "http://localhost:8080/api/v1/social-media/like/post/";
+
+export const COMMENT_API = "http://localhost:8080/api/v1/social-media/comments/post/";
+
+export const COMMENT_LIKE_API = "http://localhost:8080/api/v1/social-media/like/comment/";
+
+export const GET_CURRENT_USER = "http://localhost:8080/api/v1/users/current-user";

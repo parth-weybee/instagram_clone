@@ -21,7 +21,8 @@ const PostDetails = ({
   setCommentData
 }) => {
   const [like, setLike] = useState(isLiked);
-    const [likesState,setLikesState] = useState(likes);
+  const [likesState,setLikesState] = useState(likes);
+  const [showText, setShowText] = useState(true);
   const commentContent = useRef();
   const dispatch = useDispatch();
   return (
@@ -56,7 +57,28 @@ const PostDetails = ({
         <p className="text-white font-semibold">{likesState} likes</p>
         {showCaption && (
           <>
-            <p className="text-white">{caption}</p>
+            {caption?.split(" ").length > 10 && showText ? (
+          <p className="text-white">
+            {caption?.split(" ").slice(0, 10).join(" ")}{" "}
+            <span
+              className="text-gray-500 cursor-pointer"
+              onClick={() => setShowText(false)}
+            >
+              more...
+            </span>
+          </p>
+        ) : (
+          <p className="text-white">
+            {caption}{" "}
+            <span
+              className="text-gray-500 cursor-pointer"
+              onClick={() => setShowText(true)}
+            >
+              {caption.split(" ").length > 10 ? "...less" : ""}
+            </span>
+          </p>
+        )}
+            
             <p className="text-blue-600">
               {tags && tags.map((tag) => "#" + tag).join(" ")}
             </p>

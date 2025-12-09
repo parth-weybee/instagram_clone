@@ -39,7 +39,7 @@ const Comment = ({ comment }) => {
           onClick={() => {
             handleCommentLike(comment._id);
             setLike(!like);
-            setLikes(like ? likes - 1: likes + 1);
+            setLikes(like ? likes - 1: likes + 1)
           }}
         >
           {" "}

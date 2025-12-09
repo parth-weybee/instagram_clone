@@ -30,3 +30,7 @@ export const COMMENT_API = "http://localhost:8080/api/v1/social-media/comments/p
 export const COMMENT_LIKE_API = "http://localhost:8080/api/v1/social-media/like/comment/";
 
 export const GET_CURRENT_USER = "http://localhost:8080/api/v1/users/current-user";
+
+export const GET_FOLLOWER_LIST = "http://localhost:8080/api/v1/social-media/follow/list/followers/";
+
+export const GET_FOLLOWING_LIST = "http://localhost:8080/api/v1/social-media/follow/list/following/";

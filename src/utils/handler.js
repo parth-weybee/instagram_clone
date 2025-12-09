@@ -1,4 +1,4 @@
-import { COMMENT_API, COMMENT_LIKE_API, FOLLOW_API, LIKE_API } from "./constant";
+import { COMMENT_API, COMMENT_LIKE_API, FOLLOW_API, GET_FOLLOWER_LIST, GET_FOLLOWING_LIST, LIKE_API } from "./constant";
 
 export const handleFollow = async (profile) => {
     const token = localStorage.getItem("accessToken");
@@ -53,10 +53,22 @@ export const handleLike = async (id) => {
     export const handleCommentLike = async (id)=>
   {
     const token = localStorage.getItem("accessToken");
-    const res = await fetch(COMMENT_LIKE_API + id,{
+    await fetch(COMMENT_LIKE_API + id,{
       method: "POST",
       headers: {
         "Authorization": "Bearer " + token
       }
     })
+  }
+
+  export const handleFollowList = async (isFollowing,username,page = 1) =>
+  {
+    const token = localStorage.getItem("accessToken");
+    const res = await fetch((isFollowing ? GET_FOLLOWING_LIST : GET_FOLLOWER_LIST) + username + `?page=${page}&limit=10` ,{
+      method: "GET",
+      headers: {
+        "Authorization": "Bearer " + token
+      }
+    })
+    return await res.json();
   }

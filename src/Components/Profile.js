@@ -6,7 +6,7 @@ import ProfileDetails from "./ProfileDetails";
 import ProfilePostContainer from "./ProfilePostContainer";
 import { CREATE_POST, GET_POST_BY_USERNAME } from "../utils/constant";
 import { setProfilePosts } from "../redux/profilePostsSlice";
-const Profile = (others = false) => {
+const Profile = () => {
   // const profile = useSelector(store => store.Profile.userProfile);
   const profile = useLoaderData();
   const profilePosts = useSelector((store) => store.ProfilePost);
@@ -24,6 +24,7 @@ const Profile = (others = false) => {
       }
     );
     const data = await res.json();
+    console.log(data);
     if (data?.statusCode) {
       dispatch(setProfilePosts(data?.data));
     }
@@ -31,7 +32,7 @@ const Profile = (others = false) => {
   useEffect(() => {
     // if(!profile)  navigate("/login");
     fetchAllThePost();
-  }, []);
+  });
   const [isEditMode, setIsEdit] = useState(
     profile?.data?.createdAt === profile?.data?.updatedAt
   );

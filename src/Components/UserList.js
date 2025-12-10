@@ -2,23 +2,28 @@ import React, { useEffect, useState } from "react";
 import { handleFollowList } from "../utils/handler";
 import UserAvatar from "./UserAvatar";
 import { InView } from "react-intersection-observer";
+import { data } from "react-router-dom";
 
 const UserList = ({ isFollowing, setShowUserList, username }) => {
   const [userList, setUserList] = useState(null);
   const [userData, setUserData] = useState(null);
   useEffect(() => {
-    handleFollowList(isFollowing, username).then((res) => {
+    if(!userList)
+    {  handleFollowList(isFollowing, username).then((res) => {
       setUserList(res?.data[isFollowing ? "following" : "followers"]);
       setUserData(res);
     });
+  }
   });
   const handleIntersect = (inView) => {
     if (userData?.data?.hasNextPage && inView) {
+      console.log(userData.data);
       handleFollowList(isFollowing, username, userData?.data?.nextPage).then(
         (res) => {
+          console.log(res);
+          setUserData(res);
           const arr = res?.data[isFollowing ? "following" : "followers"];
           setUserList([...userList, ...arr]);
-          setUserData(res);
         }
       );
     }

@@ -10,6 +10,7 @@ const Profile = () => {
   // const profile = useSelector(store => store.Profile.userProfile);
   const {id} = useParams();
   const profile = useLoaderData();
+  console.log(profile);
   const profilePosts = useSelector((store) => store.ProfilePost);
   const dispatch = useDispatch();
   const navigate = useNavigate();

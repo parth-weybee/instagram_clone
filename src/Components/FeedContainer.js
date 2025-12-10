@@ -1,15 +1,13 @@
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import FeedPostContainer from './FeedPostContainer'
 import { useDispatch, useSelector } from 'react-redux'
 import { CREATE_POST } from '../utils/constant';
 import { addPostsToFeed } from '../redux/feedSlice';
-import { useNavigate } from 'react-router-dom';
 import { InView } from "react-intersection-observer";
 
 const FeedContainer = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const feedPosts = useSelector(store => store.Feed.feed);
     const currentData = useSelector(store => store.Feed.currentData);
     const GetAllPostForFeed = async (page = 1)=>
@@ -36,7 +34,6 @@ const FeedContainer = () => {
       }
       useEffect( ()=>
       {
-        // if(!profile)  navigate("/login"); 
         GetAllPostForFeed();
       },[]);
   return (

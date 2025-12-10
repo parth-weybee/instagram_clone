@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 const ImageList = ({ imageList, showBtns = true }) => {
 //   const [isLoading,setIsLoading] = useState(true);

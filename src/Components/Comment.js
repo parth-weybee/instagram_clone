@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AVATAR_IMG_URL } from "../utils/constant";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { handleCommentLike, handleDeleteComment, handleLike } from "../utils/handler";
+import { handleCommentLike, handleDeleteComment } from "../utils/handler";
 import { dateFormatter } from "../utils/dateFormater";
 import { useSelector } from "react-redux";
 

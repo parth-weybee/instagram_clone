@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { setSearchText, toggleShowSearch } from "../redux/searchSlice";
-import { useReducer, useRef } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Search = () => {

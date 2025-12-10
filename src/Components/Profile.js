@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import ProfileDetails from "./ProfileDetails";
 import ProfilePostContainer from "./ProfilePostContainer";
-import { CREATE_POST, GET_POST_BY_USERNAME } from "../utils/constant";
+import { GET_POST_BY_USERNAME } from "../utils/constant";
 import { setProfilePosts } from "../redux/profilePostsSlice";
 const Profile = () => {
   // const profile = useSelector(store => store.Profile.userProfile);
@@ -25,13 +25,13 @@ const Profile = () => {
       }
     );
     const data = await res.json();
-    console.log(data);
     if (data?.statusCode) {
       dispatch(setProfilePosts(data?.data));
     }
   };
   useEffect(() => {
-    // if(!profile)  navigate("/login");
+    if(!localStorage.getItem("accessToken"))  navigate("/login");
+    if(!profile) navigate("/");
     if(id !== profilePosts?.posts[0]?.author?.account?.username){
       fetchAllThePost();
     }

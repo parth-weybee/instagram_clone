@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom"
 import { AVATAR_IMG_URL } from "../utils/constant"
 
 const UserAvatar = ({url,fullName,username}) => {
-  const navigate = useNavigate();
   return (
     <Link to={"/profile/" + username}>
     <div className="flex items-center cursor-pointer">

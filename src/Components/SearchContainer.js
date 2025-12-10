@@ -1,7 +1,6 @@
 
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
 import { GET_POST_BY_TAGNAME } from '../utils/constant';
 import FeedPostContainer from './FeedPostContainer';
 

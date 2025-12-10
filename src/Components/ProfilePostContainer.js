@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+
 import ImageList from "./ImageList";
-import ShowPostContainer from "./ShowPostContainer";
 import { useDispatch } from "react-redux";
 import {
   setSelectedPost,

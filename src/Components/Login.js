@@ -34,7 +34,6 @@ const Login = () => {
         setIsError(json?.message);
       } else {
         localStorage.setItem("accessToken", json?.data?.accessToken);
-        localStorage.setItem("refreshToken", json?.data?.refreshToken);
         dispatch(setUser(json?.data?.user));
         navigate("/");
       }

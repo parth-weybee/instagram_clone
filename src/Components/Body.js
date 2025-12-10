@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import {  useEffect } from "react";
 import { GET_CURRENT_USER, PROFILE_API } from "../utils/constant";
 import { useDispatch } from "react-redux";
 import { setProfile } from "../redux/profileSlice";
@@ -25,6 +25,11 @@ const Body = () => {
         navigate("/profile");
       }
     }
+    else
+    {
+      localStorage.removeItem("accessToken");
+      navigate("/login");
+    }
   };
   const fetchAccount = async () => {
     const token = localStorage.getItem("accessToken");
@@ -41,11 +46,16 @@ const Body = () => {
         navigate("/profile");
       }
     }
+    else
+    {
+      localStorage.removeItem("accessToken");
+      navigate("/login");
+    }
   };
   useEffect(() => {
     fetchProfile();
     fetchAccount();
-  }, []);
+  }, [fetchProfile,fetchAccount]);
   return (
     <>
       <FeedContainer />

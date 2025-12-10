@@ -46,7 +46,6 @@ export const handleLike = async (id) => {
       }
     })
     const data = await res.json();
-    console.log(data);
     return data;
   }
 
@@ -87,11 +86,10 @@ export const handleLike = async (id) => {
   export const handleDeleteComment = async (id)=>
   {
     const token = localStorage.getItem("accessToken");
-    const res = await fetch(DELETE_COMMENT + id ,{
+    await fetch(DELETE_COMMENT + id ,{
       method: "DELETE",
       headers: {
         "Authorization": "Bearer " + token
       }
     })
-    console.log(res);
   }

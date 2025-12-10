@@ -1,4 +1,4 @@
-import { PROFILE_API, PROFILE_BY_USERNAME } from "./constant";
+import {  PROFILE_BY_USERNAME } from "./constant";
 
 const profileLoader = async (e)=>
 {

@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
-import { AVATAR_IMG_URL, FOLLOW_API } from "../utils/constant";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { handleFollow } from "../utils/handler";
 import UserList from "./UserList";
 

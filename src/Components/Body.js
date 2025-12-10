@@ -55,7 +55,7 @@ const Body = () => {
   useEffect(() => {
     fetchProfile();
     fetchAccount();
-  }, [fetchProfile,fetchAccount]);
+  }, []);
   return (
     <>
       <FeedContainer />

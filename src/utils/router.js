@@ -4,6 +4,7 @@ import Login from "../Components/Login";
 import Profile from "../Components/Profile";
 import Body from "../Components/Body";
 import profileLoader from "./profileLoader";
+import SearchContainer from "../Components/SearchContainer";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
                 path: "/profile/:id",
                 loader: profileLoader,
                 Component: Profile
+            },
+            {
+                path: "/search/:tag",
+                Component: SearchContainer
             }
         ]
     },

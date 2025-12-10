@@ -34,3 +34,9 @@ export const GET_CURRENT_USER = "http://localhost:8080/api/v1/users/current-user
 export const GET_FOLLOWER_LIST = "http://localhost:8080/api/v1/social-media/follow/list/followers/";
 
 export const GET_FOLLOWING_LIST = "http://localhost:8080/api/v1/social-media/follow/list/following/";
+
+export const GET_POST_BY_TAGNAME = "http://localhost:8080/api/v1/social-media/posts/get/t/";
+
+export const DELETE_POST = "http://localhost:8080/api/v1/social-media/posts/";
+
+export const DELETE_COMMENT = "http://localhost:8080/api/v1/social-media/comments/";

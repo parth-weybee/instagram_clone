@@ -17,7 +17,7 @@ const ProfileDetails = ({ setIsEdit, noOfPosts, profile }) => {
         <div className="flex flex-col items-center | md:flex-row">
           <img
             className="w-36 h-36 rounded-full"
-            src={profile?.coverImage?.url || AVATAR_IMG_URL}
+            src={profile?.coverImage?.url}
             alt="AVATAR IMG"
           />
           <div className="w-full px-4 text-wrap">

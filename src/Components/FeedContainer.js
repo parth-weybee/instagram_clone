@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { CREATE_POST } from '../utils/constant';
 import { addPostsToFeed } from '../redux/feedSlice';
 import { useNavigate } from 'react-router-dom';
-import { InView, useInView, useOnInView } from "react-intersection-observer";
+import { InView } from "react-intersection-observer";
 
 const FeedContainer = () => {
     const dispatch = useDispatch();

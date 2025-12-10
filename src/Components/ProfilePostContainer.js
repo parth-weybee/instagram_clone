@@ -27,7 +27,6 @@ const ProfilePostContainer = ({ posts }) => {
             />
           </div>
         ))}
-      {/* <h1 className='text-white'>Hello from Post PostContainerHeader</h1> */}
     </div>
   );
 };

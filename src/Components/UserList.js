@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { handleFollowList } from "../utils/handler";
 import UserAvatar from "./UserAvatar";
 import { InView } from "react-intersection-observer";
-import { Link } from "react-router-dom";
 
 const UserList = ({ isFollowing, setShowUserList, username }) => {
   const [userList, setUserList] = useState(null);
@@ -36,7 +35,7 @@ const UserList = ({ isFollowing, setShowUserList, username }) => {
             className="text-white text-2xl absolute right-3 top-2 cursor-pointer z-10"
             onClick={() => setShowUserList(false)}
           >
-            <i class="fa-solid fa-circle-xmark"></i>
+            <i className="fa-solid fa-circle-xmark"></i>
           </button>
           <h1 className="top-0 w-full py-2 text-white border-b-2 border-white">
             {isFollowing ? "Following" : "Follower"}

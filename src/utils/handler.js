@@ -1,4 +1,4 @@
-import { COMMENT_API, COMMENT_LIKE_API, FOLLOW_API, GET_FOLLOWER_LIST, GET_FOLLOWING_LIST, LIKE_API } from "./constant";
+import { COMMENT_API, COMMENT_LIKE_API, DELETE_COMMENT, DELETE_POST, FOLLOW_API, GET_FOLLOWER_LIST, GET_FOLLOWING_LIST, LIKE_API } from "./constant";
 
 export const handleFollow = async (profile) => {
     const token = localStorage.getItem("accessToken");
@@ -71,4 +71,27 @@ export const handleLike = async (id) => {
       }
     })
     return await res.json();
+  }
+
+  export const handleDeletePost = async (id)=>
+  {
+    const token = localStorage.getItem("accessToken");
+    await fetch(DELETE_POST + id ,{
+      method: "DELETE",
+      headers: {
+        "Authorization": "Bearer " + token
+      }
+    })
+  }
+
+  export const handleDeleteComment = async (id)=>
+  {
+    const token = localStorage.getItem("accessToken");
+    const res = await fetch(DELETE_COMMENT + id ,{
+      method: "DELETE",
+      headers: {
+        "Authorization": "Bearer " + token
+      }
+    })
+    console.log(res);
   }

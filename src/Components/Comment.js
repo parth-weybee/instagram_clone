@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AVATAR_IMG_URL } from "../utils/constant";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { handleCommentLike, handleLike } from "../utils/handler";
+import { handleCommentLike, handleDeleteComment, handleLike } from "../utils/handler";
 import { dateFormatter } from "../utils/dateFormater";
+import { useSelector } from "react-redux";
 
 const Comment = ({ comment }) => {
   const [like, setLike] = useState(comment?.isLiked);
   const [likes,setLikes] = useState(comment?.likes);
   const [showText, setShowText] = useState(true);
+  const [isDeleted,setIsDeleted] = useState(false);
+  const profile = useSelector(store => store.Profile.userProfile);
   const navigate = useNavigate();
+  if(isDeleted) return <></>
   return (
     <div className="py-4">
       <div
@@ -30,7 +34,7 @@ const Comment = ({ comment }) => {
           <div className="flex flex-row gap-3 px-2 text-gray-500 text-xs">
             <p>{dateFormatter(comment?.createdAt)}</p>
             <p>{likes} likes</p>
-            <p>Reply</p>
+            {comment?.author?.account?.username === profile?.account?.username && <p className="cursor-pointer text-red-400" onClick={()=> {handleDeleteComment(comment?._id); setIsDeleted(true)}}>Delete</p>}
           </div>
         </div>
 

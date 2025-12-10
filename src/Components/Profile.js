@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import Edit from "./Edit";
 import { useDispatch, useSelector } from "react-redux";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import ProfileDetails from "./ProfileDetails";
 import ProfilePostContainer from "./ProfilePostContainer";
 import { CREATE_POST, GET_POST_BY_USERNAME } from "../utils/constant";
 import { setProfilePosts } from "../redux/profilePostsSlice";
 const Profile = () => {
   // const profile = useSelector(store => store.Profile.userProfile);
+  const {id} = useParams();
   const profile = useLoaderData();
   const profilePosts = useSelector((store) => store.ProfilePost);
   const dispatch = useDispatch();
@@ -31,7 +32,9 @@ const Profile = () => {
   };
   useEffect(() => {
     // if(!profile)  navigate("/login");
-    fetchAllThePost();
+    if(id !== profilePosts?.posts[0]?.author?.account?.username){
+      fetchAllThePost();
+    }
   });
   const [isEditMode, setIsEdit] = useState(
     profile?.data?.createdAt === profile?.data?.updatedAt

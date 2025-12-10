@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { togglePostContainer } from "../redux/createPostSlice";
 import { toggleShowSearch } from "../redux/searchSlice";
 import { AVATAR_IMG_URL } from "../utils/constant";
@@ -7,6 +7,13 @@ import { AVATAR_IMG_URL } from "../utils/constant";
 const Header = () => {
   const dispatch = useDispatch();
   const profile = useSelector((store) => store.Profile.userProfile);
+  const navigate = useNavigate();
+  const handleLogOut = ()=>
+  {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    navigate("/login");
+  }
   return (
     <div className="fixed bg-black  px-2 py-6 h-[80px] z-50 flex flex-row w-full bottom-0 border-t items-center | md:z-30 md:items-start md:border-t-0 md:flex-col md:h-screen md:w-1/12 md:border-r | lg:w-2/12">
       <h1 className="text-3xl text-white px-4 py-5 font-serif hidden | lg:inline-block">
@@ -60,6 +67,7 @@ const Header = () => {
           </Link>
         </li>
       </ul>
+      <button className="mt-auto px-4 py-3 text-red-500 text-xl hidden | lg:inline-block" onClick={()=> handleLogOut()}>LogOut</button>
     </div>
   );
 };

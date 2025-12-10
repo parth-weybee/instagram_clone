@@ -4,7 +4,6 @@ import { handleFollow } from "../utils/handler";
 import UserList from "./UserList";
 
 const ProfileDetails = ({ setIsEdit, noOfPosts, profile }) => {
-  console.log(profile?.isFollowing);
   const account = useSelector((store) => store?.User);
   const [follow,setFollow] = useState(profile.isFollowing);
   const [showUserList,setShowUserList] = useState(false);

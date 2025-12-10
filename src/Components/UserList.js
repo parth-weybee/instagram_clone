@@ -17,10 +17,8 @@ const UserList = ({ isFollowing, setShowUserList, username }) => {
   });
   const handleIntersect = (inView) => {
     if (userData?.data?.hasNextPage && inView) {
-      console.log(userData.data);
       handleFollowList(isFollowing, username, userData?.data?.nextPage).then(
         (res) => {
-          console.log(res);
           setUserData(res);
           const arr = res?.data[isFollowing ? "following" : "followers"];
           setUserList([...userList, ...arr]);

@@ -10,6 +10,7 @@ import {
   setPostImages,
   togglePostContainer,
 } from "../redux/createPostSlice";
+import { useNavigate } from "react-router-dom";
 
 const PostUploadContainer = () => {
   const imageList = useSelector((store) => store.CreatePost.postImages);
@@ -17,6 +18,7 @@ const PostUploadContainer = () => {
   const caption = useRef();
   const tags = useRef();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handlePostSubmit = async () => {
     const blobs = await Promise.all(
       imageList.map((imgUrl) => fetch(imgUrl).then((res) => res.blob()))
@@ -25,7 +27,6 @@ const PostUploadContainer = () => {
       (blob, index) =>
         new File([blob], "image" + index + ".png", { type: blob.type })
     );
-
     const formData = new FormData();
     files.map((file) => {
       formData.append("images", file);
@@ -43,11 +44,12 @@ const PostUploadContainer = () => {
       body: formData,
     });
     const data = await res.json();
-    if (data?.statusCode) {
+    if (data?.statusCode === 201) {
       dispatch(setPostImages(null));
       dispatch(setPostDetails(null));
       dispatch(togglePostContainer(false));
     }
+    navigate("/profile/" + profile?.account?.username);
   };
   return (
     <div className="fixed flex-row top-[50%] h-[70%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-3xl bg-[#212328] text-center z-50 w-11/12 overflow-y-scroll justify-center | md:overflow-y-hidden | lg:w-6/12">

@@ -24,7 +24,7 @@ const useFetchProfile = ()=>
     if (data.statusCode === 200) {
       dispatch(setProfile(data?.data));
       if (data?.data?.createdAt === data?.data?.updatedAt) {
-        navigate("/profile");
+        navigate("/profile/" + data?.data?.account?.username);
       }
     }
     else
@@ -46,7 +46,7 @@ const useFetchProfile = ()=>
     if (data.statusCode === 200) {
       dispatch(setUser(data?.data));
       if (data?.data?.createdAt === data?.data?.updatedAt) {
-        navigate("/profile");
+        navigate("/profile/" + data?.data?.username);
       }
     }
     else
@@ -57,8 +57,8 @@ const useFetchProfile = ()=>
   };
   useEffect(()=>
 {
-    fetchProfile();
     fetchAccount();
+    fetchProfile();
 },[fetchProfile,fetchAccount])
 }
 

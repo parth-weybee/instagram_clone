@@ -1,67 +1,9 @@
-import React, { useRef, useState } from "react";
-import { PROFILE_API, PROFILE_AVATAR_API } from "../utils/constant";
-import { useDispatch, useSelector } from "react-redux";
-import { setProfile } from "../redux/profileSlice";
 import { dateFormatter } from "../utils/dateFormater";
 import UserAvatar from "./UserAvatar";
+import useHandleFileChanges from "../hooks/useHandleFileChanges";
 
 const Edit = ({ setIsEdit }) => {
-  const profile = useSelector((store) => store.Profile?.userProfile);
-  const dispatch = useDispatch();
-  const [error, setError] = useState([]);
-  const firstName = useRef(profile?.firstName);
-  const fileRef = useRef(null);
-  const lastName = useRef(profile?.lastName);
-  const location = useRef(profile?.location);
-  const bio = useRef(profile?.bio);
-  const dataOfBirth = useRef(profile?.dob);
-  const phoneNumber = useRef(profile?.phoneNumber);
-  const countryCode = useRef(profile?.countryCode);
-  const handleSaveChanges = async () => {
-    const token = localStorage.getItem("accessToken");
-    const response = await fetch(PROFILE_API, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify({
-        firstName: firstName?.current?.value,
-        lastName: lastName?.current?.value && profile.lastName,
-        location: location?.current?.value,
-        bio: bio?.current?.value,
-        dob: dataOfBirth?.current?.value,
-        phoneNumber: phoneNumber?.current?.value,
-        countryCode: countryCode?.current?.value,
-      }),
-    });
-    const data = await response.json();
-    if (data?.statusCode === 200) {
-      dispatch(setProfile(data?.data));
-      setIsEdit(false);
-    } else {
-      setError(data?.errors);
-    }
-  };
-  const handleFileChange = async (e) => {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append("coverImage", file);
-    const token = localStorage.getItem("accessToken");
-    const res = await fetch(PROFILE_AVATAR_API, {
-      method: "PATCH",
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-      body: formData,
-    });
-    const data = await res.json();
-    if (data?.statusCode === 200) {
-      dispatch(setProfile(data?.data));
-    } else {
-      setError(data?.errors);
-    }
-  };
+  const {error,firstName,lastName,profile,location,bio,dataOfBirth,phoneNumber,countryCode,fileRef,handleFileChange,handleSaveChanges} = useHandleFileChanges(setIsEdit);
   return (
     <div className="w-full mx-auto h-full bg-black pt-6 px-4 overflow-y-scroll pb-24 no-scrollbar | md:pb-6 md:w-8/12 md:overflow-y-scroll | lg:h-screen lg:w-6/12">
       <h1 className="text-white text-xl font-semibold">Edit Profile</h1>

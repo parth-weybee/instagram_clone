@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { handleFollow } from "../utils/handler";
 import UserList from "./UserList";
 
@@ -9,6 +9,10 @@ const ProfileDetails = ({ setIsEdit, noOfPosts, profile }) => {
   const [showUserList,setShowUserList] = useState(false);
   const [followers,setfollowers] = useState(profile?.followersCount);
   const [isFollowing,setIsFollowing] = useState(true);
+  useEffect(()=>
+  {
+    setFollow(profile?.isFollowing);
+  },[profile]);
   return (
     <div className="w-full mx-auto | md:w-8/12">
       {showUserList && <UserList isFollowing={isFollowing} setShowUserList={setShowUserList} username={profile?.account?.username}/>};

@@ -46,7 +46,7 @@ const Login = () => {
         body: JSON.stringify({
           username: userName.current.value,
           password: password.current.value,
-          fullname: fullName.current.value,
+          // fullname: fullName.current.value,
           email: email.current.value,
         }),
       });

@@ -13,7 +13,7 @@ const FeedPostContainer = ({ post }) => {
           username={post?.author?.account?.username}
         />
       </div>
-      <div className="h-[300px] w-[300px] mx-auto ">
+      <div className=" w-[300px] mx-auto ">
         <ImageList imageList={post?.images.map((img) => img.url)} />
       </div>
       <PostDetails
